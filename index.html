@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventario Miguel Frausto</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Inventario "el Fizz"</h1>
+      <p class="azul">Inventario de productos MacMainPack</p>
+    </div>
+
+    <div class="content">
+      <div class="left">
+        <h2>Agregar/Modificar productos</h2>
+        <div class="content-info">
+          <form>
+            <div class="field">
+              <label>codigó de producto:</label>
+              <input id="id" type="number" size="35" />
+            </div>
+            <div class="field">
+              <label>Nombre:</label>
+              <input id="name" type="text" size="35" />
+            </div>
+            <div class="field">
+              <label>Cantidad:</label>
+              <input id="mount" type="number" />
+            </div>
+            <div class="field">
+              <label>Precio:</label>
+              <input id="price" type="number" />
+            </div>
+            <div class="field">
+              <input class="button" id="btnRegister" type="button" value="Registrar" />
+              <input class="button" id="btnReplace" type="button" value="Modificar" />
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="right">
+        <h2>Inventario</h2>
+        <div class="content-info">
+          <table id="registry">
+            <tr>
+              <th>Codigo de producto</th>
+              <td><input id="idBrowser" type="number" /></td>
+              <td id="btns"></td>
+            </tr>
+            <tr>
+            <tr>
+              <th>Listar</th>
+              <td id="btnList"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="divData">
+      <div class="left">
+        <input class="button" type="button" id="cleanActions" value="Limpiar Acciones">
+        <table id="tableActions">
+          <tr><th>Actions</th></tr>
+        </table>
+      </div>
+    </div>
+    <div class="right">
+      <table id="list">
+        <tr>
+          <th id="product">Producto</th>
+          <th id="id">ID</th>
+          <th id="amount">Cantidad</th>
+          <th id="price">Precio</th>
+          <th id="totalPrice">Precio Total</th>
+        </tr>
+      </table>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="class/inventario.js" type="module"></script>
+  </body>
+</html>
