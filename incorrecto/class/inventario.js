@@ -16,6 +16,16 @@ class Inventario {
     btnReplace.addEventListener('click', this.onReplace)
     btnCleanActions.addEventListener('click', this.cleanActions);
   }
+  getOrderInventary(){
+    let pos = this.inventary.length - 1;
+    for (let i = 0; i < this.inventary.length; i++) {
+      if (this.inventary[pos].getId() < this.inventary[i].getId()) {
+        let value = this.inventary[pos];
+        this.inventary[pos] = this.inventary[i];
+        this.inventary[i] = value;
+      }
+    }
+  }
   addProduct = () => {
     let passAdd = false;
     let product = Product.createProduct();
@@ -28,9 +38,12 @@ class Inventario {
     }
     if(!product){
       Swal.fire('Ups...', 'faltan datos por agregar', 'error');
+      return false;
     }
     if(passAdd) {
       this.inventary.push(product);
+      this.getOrderInventary()
+      // Ordenar inventario
       this.tellActions.tell(`Se agrego el producto ${product.getName()} con el id: ${product.getId()}`)
       Swal.fire('Felicidades!', 'Agregaste un producto :3', 'success');
     }
@@ -48,7 +61,6 @@ class Inventario {
       Swal.fire('Lo siento :c', 'El inventario comio demasiado', 'error')
       return false;
     }
-   
   }
     // No ocupan tellActions
   noRepeatId(product){
@@ -142,8 +154,9 @@ cleanTable(){
     }
   };
   browser(id) {
+    id = Number(id);
     for (let i = 0; i < this.inventary.length; i++) {
-      if (this.inventary[i].getId() === id) {
+      if (this.inventary[i].getId() == id) {
         return this.inventary[i]
       }
     }
@@ -152,7 +165,6 @@ cleanTable(){
   onReplace = () => {
     let idToChange = document.getElementById("id").value;
     let numUpdate = this.getPositionId(idToChange)
-    console.log(idToChange)
     if(this.browser(idToChange)) {
       let product = Product.createProduct();
         if(product){
@@ -180,7 +192,6 @@ cleanTable(){
     }
     let position = this.getPositionId(idToDelete)
     let nextPosition = position + 1;
-    console.log(position, nextPosition)
     while(nextPosition < this.inventary.length){
       let move = this.inventary[position]
       this.inventary[position] = this.inventary[nextPosition];

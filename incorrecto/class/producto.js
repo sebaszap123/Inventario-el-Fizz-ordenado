@@ -23,7 +23,7 @@ export default class Product {
     let inpName = document.querySelector("#name");
     let inpMount = document.querySelector("#mount");
     let inpPrice = document.querySelector("#price");
-    let id = inpId.value;
+    let id = Number(inpId.value);
     let name = inpName.value;
     let mount = inpMount.value;
     let price = inpPrice.value;
